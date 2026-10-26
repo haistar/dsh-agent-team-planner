@@ -1,0 +1,79 @@
+{
+  "name": "dsh-agent-team-planner",
+  "version": "0.8.5",
+  "description": "DSH Agent Team Planner - project team, roles, members, requirements, versions, workflow gates and meetings on top of the official Agent Teams (community plugin, not affiliated with DeepSeek).",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "lib/roles.js",
+    "cordis.patch.yml",
+    "scripts/install-manual.ps1",
+    "scripts/uninstall-manual.ps1",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "check": "node --check lib/index.js && node --check lib/client.js && node --check lib/roles.js && node --check test/smoke.mjs && node --check test/client-sim.mjs && node --check test/render-check.mjs",
+    "test": "node test/smoke.mjs && node test/client-sim.mjs && node test/render-check.mjs"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": []
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-agent": "*",
+    "@deepseek-ai/dsh-llm": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-agent": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-llm": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "agent-teams",
+    "project-management",
+    "workflow",
+    "meetings"
+  ],
+  "engines": {
+    "dsh": ">=0.2.1-rc.2 <0.3.0",
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "private": true,
+  "author": {
+    "name": "haistar (Hohhabur)",
+    "email": "haistarh@qq.com",
+    "url": "https://github.com/haistar"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haistar/dsh-agent-team-planner.git"
+  },
+  "homepage": "https://github.com/haistar/dsh-agent-team-planner#readme",
+  "bugs": {
+    "url": "https://github.com/haistar/dsh-agent-team-planner/issues"
+  }
+}

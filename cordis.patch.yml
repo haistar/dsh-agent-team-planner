@@ -1,0 +1,5 @@
+# Agent Team Planner: a planning layer on top of the official Agent Teams.
+# Insert this plugin with one Host service; do not disable or override official lines.
+- insert:
+    - id: agent-team-planner
+      name: dsh-agent-team-planner

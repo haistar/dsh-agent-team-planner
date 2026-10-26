@@ -1,0 +1,32 @@
+node_modules/
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Plugin runtime/test artifacts
+SMOKE-TEST.md
+SMOKE-TEST-S1S3.md
+test/last-run.json
+test/.tmp/
+.smoke/
+.verify-tmp/
+
+# Planner state is per-workspace user data
+.dsh_teams/
+
+# Internal development / verification write-ups (not published)
+README-S1.md
+VERIFICATION-*.md
+SMOKE-TEST*.md
+UI-VERIFICATION*.md
+E2E-CHECKLIST.md
+docs/P3-P4-UX-WALKTHROUGH.md
+docs/UI-OPTIMIZATION-PLAN.md
+docs/ui-mockup.ps1
+
+# Local environment / secrets
+.env
+.env.*
+*.pem
+*.key
