@@ -13,7 +13,12 @@ DSH Agent Teams gives you the team and the task board. DSH Agent Team Planner ad
 
 > One workspace = one project team. One version = one delivery pipeline. One click = the next legal move.
 
-![Workbench](docs/ui-mockup.png)
+![Workbench](docs/ScreenShot_ui_10.png)
+![Workbench](docs/ScreenShot_ui_00.png)
+![Workbench](docs/ScreenShot_ui_01.png)
+![Workbench](docs/ScreenShot_ui_02.png)
+![Workbench](docs/ScreenShot_ui_03.png)
+![Workbench](docs/ScreenShot_ui_04.png)
 
 ## Why this exists
 

@@ -13,7 +13,12 @@ Agent Teams 提供了「团队」和「任务板」这两组协作原语。Agent
 
 > 一个工作区 = 一个项目团队。一个版本 = 一条交付流水线。一次点击 = 下一个合法动作。
 
-![工作台](docs/ui-mockup.png)
+![工作台](docs/ScreenShot_ui_10.png)
+![工作台](docs/ScreenShot_ui_00.png)
+![工作台](docs/ScreenShot_ui_01.png)
+![工作台](docs/ScreenShot_ui_02.png)
+![工作台](docs/ScreenShot_ui_03.png)
+![工作台](docs/ScreenShot_ui_04.png)
 
 ## 为什么需要它
 
