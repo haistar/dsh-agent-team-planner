@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.0
+
+- Russian UI: full 276-key Russian dictionary, language selector (中文 / English / Русский), and localized plugin title.
+- Language follows DSH: zh→Chinese, ru→Russian, every other locale→English, including live locale changes.
+- Host-generated content follows the active language: requirement/architecture/meeting templates, document titles, meeting minutes, wake/reject messages, meeting rules and prompt language directives.
+- Added UPGRADING.md and README upgrade sections: GitHub-only manual upgrade via git pull + install script + DSH restart; no npm/auto-updater.
+
 ## 0.8.5
 
 - First public-release preparation: new bilingual README (English + 简体中文), GitHub repository/author metadata, MIT copyright holder, README-aware installer, CI runs the full test suite, and internal verification documents excluded from the repository.

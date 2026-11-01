@@ -212,6 +212,7 @@ eval(code)
 
 const ZH = {}
 const EN = {}
+const RU = {}
 let language = 'zh'
 const requestedKeys = new Set()
 const missingKeys = new Set()
@@ -222,7 +223,7 @@ const startedSessions = []
 
 const translate = (key) => {
   requestedKeys.add(key)
-  const dictionary = language === 'zh' ? ZH : EN
+  const dictionary = language === 'zh' ? ZH : language === 'ru' ? RU : EN
   if (!(key in dictionary)) {
     missingKeys.add(key)
     return undefined
@@ -398,6 +399,7 @@ const ctx = {
   locale: {
     register: (ns, locale, dictionary) => {
       if (locale === 'zh') Object.assign(ZH, dictionary)
+      else if (locale === 'ru') Object.assign(RU, dictionary)
       else Object.assign(EN, dictionary)
       return () => {}
     },
@@ -467,6 +469,14 @@ const run = async () => {
   const english = textOf(tree)
   check('en switch re-renders translated shell', english.includes('Version Board') && english.includes('Project'), english.slice(0, 120))
   check('en render requested no missing i18n keys', missingKeys.size === 0, [...missingKeys].join(','))
+
+  // Russian switch follows the same locale subscription path.
+  language = 'ru'
+  for (const subscriber of localeSubscribers) subscriber()
+  tree = await mini.settle(main, {})
+  const russian = textOf(tree)
+  check('ru switch re-renders translated shell', russian.includes('Доска версий') && russian.includes('Текущий проект'), russian.slice(0, 120))
+  check('ru render requested no missing i18n keys', missingKeys.size === 0, [...missingKeys].join(','))
 
   // Requirement create lives on the dedicated Requirements tab. The create form
   // intentionally has no task-spec editor: the Host generates a baseline.
@@ -615,8 +625,9 @@ const run = async () => {
   check('all literal/dynamic i18n keys exist in zh+en', absent.length === 0, absent.join(','))
   const zhKeys = Object.keys(ZH).sort()
   const enKeys = Object.keys(EN).sort()
-  check('zh/en dictionaries have identical key sets', JSON.stringify(zhKeys) === JSON.stringify(enKeys), `${zhKeys.length}/${enKeys.length}`)
-  check('render requested keys exist in both dictionaries', [...requestedKeys].every((key) => key in ZH && key in EN), [...requestedKeys].filter((key) => !(key in ZH) || !(key in EN)).join(','))
+  const ruKeys = Object.keys(RU).sort()
+  check('zh/en/ru dictionaries have identical key sets', JSON.stringify(zhKeys) === JSON.stringify(enKeys) && JSON.stringify(zhKeys) === JSON.stringify(ruKeys), `${zhKeys.length}/${enKeys.length}/${ruKeys.length}`)
+  check('render requested keys exist in all dictionaries', [...requestedKeys].every((key) => key in ZH && key in EN && key in RU), [...requestedKeys].filter((key) => !(key in ZH) || !(key in EN) || !(key in RU)).join(','))
 }
 
 await run()
