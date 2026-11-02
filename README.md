@@ -130,7 +130,7 @@ Settings has a real switch for **High-efficiency mode** (default off). When enab
 
 ### 10. Bilingual, accessible, dark-first
 
-- Chinese/English UI with a top-bar toggle.
+- Chinese / English / Russian UI; the plugin follows the DSH locale and falls back to English for unsupported locales.
 - Dark developer-tool palette, 4/8 px spacing rhythm, semantic status colors.
 - Focus-visible rings, role/switch/aria-checked semantics, Esc-closable modals, reduced-motion CSS.
 - Pagination and adaptive row counts for tasks, artifacts, members and timeline.
@@ -229,6 +229,10 @@ The tests use in-memory fake Hosts; no real team, network or DSH instance is req
 - Chinese holiday calendar currently covers 2026; future years need an annual update.
 - Token usage is not exposed by the official task view; task details state this explicitly instead of inventing numbers.
 - Custom in-conversation confirmation requests are not yet extracted automatically; the manual-confirmation section derives from development completion and draft reports.
+
+## Upgrading
+
+This is a GitHub-only, copy/link installation with no npm package and no auto-updater. Upgrade with `git pull --ff-only`, re-run `scripts/install-manual.ps1`, then restart DSH Web. See [UPGRADING.md](UPGRADING.md) for rollback, custom profiles and state notes.
 
 ## Contributing
 
