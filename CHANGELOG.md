@@ -4,6 +4,8 @@
 
 - Fix Windows PowerShell install/uninstall writing a UTF-8 BOM into the DSH profile manifest, which caused `SyntaxError: Unexpected token '﻿'` at DSH startup.
 - Installer and uninstaller now write UTF-8 without BOM via `UTF8Encoding(false)`; re-running the installer repairs an affected manifest.
+- Uninstaller normalizes a legacy BOM backup before restoring it, so removing the plugin cannot reintroduce the startup error.
+- Added complete Chinese/English/Russian user manuals under docs/ and linked them from both READMEs.
 - Added manifest-encoding troubleshooting to UPGRADING.md.
 
 ## 0.9.0
