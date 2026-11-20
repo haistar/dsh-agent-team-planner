@@ -230,6 +230,12 @@ The tests use in-memory fake Hosts; no real team, network or DSH instance is req
 - Token usage is not exposed by the official task view; task details state this explicitly instead of inventing numbers.
 - Custom in-conversation confirmation requests are not yet extracted automatically; the manual-confirmation section derives from development completion and draft reports.
 
+## Manuals
+
+- [Complete user manual — English](docs/DSH_Agent_Team_Planner_Manual-v2_en.md)
+- [完整用户手册 — 中文](docs/DSH_Agent_Team_Planner_Manual-v2_zh.md)
+- [Полное руководство — Русский](docs/DSH_Agent_Team_Planner_Manual-v2_ru.md)
+
 ## Upgrading
 
 This is a GitHub-only, copy/link installation with no npm package and no auto-updater. Upgrade with `git pull --ff-only`, re-run `scripts/install-manual.ps1`, then restart DSH Web. See [UPGRADING.md](UPGRADING.md) for rollback, custom profiles and state notes.

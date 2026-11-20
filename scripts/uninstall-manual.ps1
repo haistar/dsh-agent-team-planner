@@ -10,8 +10,12 @@ $manifestPath = Join-Path $ProfileDir 'package.json'
 $backupPath = Join-Path $ProfileDir 'package.json.atplanner-backup'
 $target = Join-Path $ProfileDir "node_modules\$name"
 
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 if (Test-Path -LiteralPath $backupPath) {
   Copy-Item -LiteralPath $backupPath -Destination $manifestPath -Force
+  # The backup may predate the no-BOM fix; normalize it before DSH reads it.
+  $restored = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
+  [IO.File]::WriteAllText($manifestPath, ($restored | ConvertTo-Json -Depth 20), $utf8NoBom)
   Write-Host "manifest restored from backup"
 } else {
   $manifest = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -19,9 +23,8 @@ if (Test-Path -LiteralPath $backupPath) {
   $bundles = @($manifest.dsh.profile.bundles) | Where-Object { $_ -ne $name }
   $manifest.dsh.profile | Add-Member -MemberType NoteProperty -Name bundles -Value $bundles -Force
   $json = $manifest | ConvertTo-Json -Depth 20
-# See install-manual.ps1: -Encoding UTF8 writes a BOM on Windows PowerShell 5.1.
-$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
-[IO.File]::WriteAllText($manifestPath, $json, $utf8NoBom)
+  # See install-manual.ps1: -Encoding UTF8 writes a BOM on Windows PowerShell 5.1.
+  [IO.File]::WriteAllText($manifestPath, $json, $utf8NoBom)
   Write-Host "manifest entry removed"
 }
 

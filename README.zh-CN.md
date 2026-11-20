@@ -230,6 +230,12 @@ npm test        # Host 冒烟 + Client 模拟 + Renderer/i18n
 - 官方任务视图不提供 Token 统计；任务详情会明确说明，而不是编造数字。
 - 对话中临时提出的自定义确认尚未自动结构化；人工确认区目前由开发完成和草稿报告推导。
 
+## 操作手册
+
+- [完整用户手册 — 中文](docs/DSH_Agent_Team_Planner_Manual-v2_zh.md)
+- [Complete user manual — English](docs/DSH_Agent_Team_Planner_Manual-v2_en.md)
+- [Полное руководство — Русский](docs/DSH_Agent_Team_Planner_Manual-v2_ru.md)
+
 ## 升级
 
 本项目仅通过 GitHub 分发，没有 npm 包，也没有自动更新器。升级流程：`git pull --ff-only` → 重新运行 `scripts/install-manual.ps1` → 重启 DSH Web。回滚、自定义 profile 和状态说明见 [UPGRADING.md](UPGRADING.md)。
