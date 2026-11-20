@@ -1,7 +1,7 @@
 # DSH Agent Team Planner 完整用户手册
 
 > **适用版本：** 插件 `v0.9.1`（`DSH 0.2.1-rc.2`）  
-> **作者：** abedrin74-stack, DeepSeek, Gemini, haistar  
+> **作者：** Alex, DeepSeek, Gemini, haistar  
 > **构建日期：** 12.11.2026  
 > **译者说明：** 界面按钮、状态名称与示例提示词均按语义译为中文；代码、命令、文件名、模型名及各类标识符保留原文。原文中需要粘贴进配置的俄语提示词，保留俄语原文并附中文释义，便于直接使用。
 

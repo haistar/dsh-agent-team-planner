@@ -1,7 +1,7 @@
 # DSH Agent Team Planner — Complete User Manual
 
 > **Applies to:** plugin `v0.9.1` (`DSH 0.2.1-rc.2`)  
-> **Authors:** abedrin74-stack, DeepSeek, Gemini, haistar  
+> **Authors:** Alex, DeepSeek, Gemini, haistar  
 > **Build date:** 12.11.2026  
 > **Translator's note:** UI labels, status names, and example prompt strings are rendered in English; code, commands, file names, model names, and identifiers are kept exactly as in the original Russian manual. Where the original embeds a Russian instruction string, the English rendering is given with the Russian original noted.
 
