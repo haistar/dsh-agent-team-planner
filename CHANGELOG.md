@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.1
+
+- Fix Windows PowerShell install/uninstall writing a UTF-8 BOM into the DSH profile manifest, which caused `SyntaxError: Unexpected token '﻿'` at DSH startup.
+- Installer and uninstaller now write UTF-8 without BOM via `UTF8Encoding(false)`; re-running the installer repairs an affected manifest.
+- Added manifest-encoding troubleshooting to UPGRADING.md.
+
 ## 0.9.0
 
 - Russian UI: full 276-key Russian dictionary, language selector (中文 / English / Русский), and localized plugin title.

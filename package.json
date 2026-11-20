@@ -1,6 +1,6 @@
 {
   "name": "dsh-agent-team-planner",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "DSH Agent Team Planner - project team, roles, members, requirements, versions, workflow gates and meetings on top of the official Agent Teams (community plugin, not affiliated with DeepSeek).",
   "type": "module",
   "main": "lib/index.js",
