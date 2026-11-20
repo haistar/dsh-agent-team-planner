@@ -18,7 +18,10 @@ if (Test-Path -LiteralPath $backupPath) {
   if ($null -ne $manifest.dependencies) { $manifest.dependencies.PSObject.Properties.Remove($name) }
   $bundles = @($manifest.dsh.profile.bundles) | Where-Object { $_ -ne $name }
   $manifest.dsh.profile | Add-Member -MemberType NoteProperty -Name bundles -Value $bundles -Force
-  $manifest | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath $manifestPath -Encoding UTF8
+  $json = $manifest | ConvertTo-Json -Depth 20
+# See install-manual.ps1: -Encoding UTF8 writes a BOM on Windows PowerShell 5.1.
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[IO.File]::WriteAllText($manifestPath, $json, $utf8NoBom)
   Write-Host "manifest entry removed"
 }
 

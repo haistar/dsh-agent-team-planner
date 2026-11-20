@@ -26,7 +26,11 @@ if ($null -eq $manifest.dsh.profile) { $manifest.dsh | Add-Member -MemberType No
 $bundles = @($manifest.dsh.profile.bundles)
 if ($bundles -notcontains $name) { $bundles += $name }
 $manifest.dsh.profile | Add-Member -MemberType NoteProperty -Name bundles -Value $bundles -Force
-$manifest | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath $manifestPath -Encoding UTF8
+$json = $manifest | ConvertTo-Json -Depth 20
+# Windows PowerShell 5.1 writes a BOM with -Encoding UTF8; DSH then fails with
+# "Unexpected token '﻿'" when it parses the profile manifest. Write UTF-8 without BOM.
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[IO.File]::WriteAllText($manifestPath, $json, $utf8NoBom)
 
 $target = Join-Path $ProfileDir "node_modules\$name"
 if (Test-Path -LiteralPath $target) { Remove-Item -LiteralPath $target -Recurse -Force }

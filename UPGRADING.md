@@ -76,3 +76,15 @@ The plugin is loaded by DSH Web from a local profile. Automatically replacing fi
 npm run check
 npm test
 ```
+
+## Manifest encoding fix
+
+`install-manual.ps1` and `uninstall-manual.ps1` now write the profile `package.json` as **UTF-8 without BOM**. Windows PowerShell 5.1's `Set-Content -Encoding UTF8` wrote a BOM, which DSH rejected with `SyntaxError: Unexpected token '﻿'`.
+
+If an existing installation already has a BOM and DSH will not start:
+
+1. Open a terminal (DSH does not need to be running).
+2. Run the fixed installer for your profile, or run the repository script directly.
+3. Restart DSH Web.
+
+Re-running the installer repairs the manifest without touching planner state.
