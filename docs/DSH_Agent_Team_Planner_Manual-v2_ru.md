@@ -1,7 +1,7 @@
 # Полное руководство пользователя DSH Agent Team Planner / Complete User Manual
 
 > **Актуально для:** плагина `v0.9.1` (`DSH 0.2.1-rc.2`)  
-> **Авторы:** abedrin74-stack, DeepSeek, Gemini  
+> **Авторы:** Alex, DeepSeek, Gemini  
 > **Дата сборки:** 12.11.2026  
 
 ---
